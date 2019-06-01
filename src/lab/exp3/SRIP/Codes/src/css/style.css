@@ -1,0 +1,65 @@
+/*Addes margin and padding 
+-> Margin is added so that is a bit away from the start of the we page
+-> Width is set to 1200 px so that the divs do not stack vertically when the window is resized
+padding is set to zero */
+#nav {
+margin:20px;
+padding:0;
+width:1200px;
+}
+
+
+
+/*makes the divs to me alined in horizontal orientation
+-> The Display with Parameter inline Block maks the blocks alline in hoizontal orientation
+-> This is mad a class because we need to use this property multiple time to multiple divs */
+.divinline {
+display:inline-block;
+}
+/*Addes margin  in the divs
+-> The properties are used to style the divs Link elements only */
+.div-nav  a {
+text-decoration:none;
+padding:8px 0;
+width:130px;
+background:#009900;
+color:#eee;
+float:left;
+font-size:15px;
+text-align:center;
+margin-right: -4px;
+margin-left: -4px; 
+
+}
+/*Added rounded corner on left side of the divs*/
+.nav-left-div {
+	border-top-left-radius:0.8em;border-bottom-left-radius:0.8em;
+
+}
+/*Added rounded corner on left side of the divs*/
+.nav-right-div {
+	border-top-right-radius:0.8em;border-bottom-right-radius:0.8em;
+
+}
+
+/*Added pading makes a big rectangle*/
+.nav-mid{
+text-decoration:none;padding:16.5px;width:740px;background:#009900;color:#eee;float:left;
+}
+/* The footer adding padding and backgrounf image*/
+#footer
+{
+padding-left:10px;
+padding-top:6px;
+margin-left:3px;
+background-image:url("file:///Volumes/My%20Files/srip19/Assignment2/quantum-chemistry-iiith/src/lab/exp3/SRIP/Codes/src/img/footer.jpg");
+width:1095px;
+height:27px;
+}
+/* Adding the test styel and test colour for the fotter*/
+#footer a
+{
+font-size:14px;
+text-decoration:none;
+color:#009900;
+}
