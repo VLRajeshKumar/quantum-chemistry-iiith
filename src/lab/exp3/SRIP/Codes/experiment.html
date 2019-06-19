@@ -54,59 +54,58 @@
 	<canvas id ='c'></canvas>
 	</div>
 <script type="text/javascript">
-function main() {
-  const canvas = document.querySelector('#c');
-  const renderer = new THREE.WebGLRenderer({canvas});
-
-  const fov = 75;
-  const aspect = 2;  // the canvas default
-  const near = 0.1;
-  const far = 5;
-  const camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
-  camera.position.z = 2;
-
-  const scene = new THREE.Scene();
-
-  {
+	function light(scene) {
     const color = 0xFFFFFF;
     const intensity = 1.25;
     const light = new THREE.DirectionalLight(color, intensity);
-    light.position.set(-1, 2, 4);
+    light.position.set(1, 2, 10);
     scene.add(light);
   }
+function main() {
+  const canvas = document.querySelector('#c');
+  const renderer = new THREE.WebGLRenderer({canvas});
+  const fov = 75;
+  const aspect = 2;  // the canvas default
+  const near = 0.1;
+  const far = 10;
+  const camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
+  camera.position.z = 4;
+  const scene = new THREE.Scene();
+  light(scene);
+  
 
-  const boxWidth = 0.5;
-  const boxHeight = 25;
-  const boxDepth = 25;
-  const geometry = new THREE.SphereGeometry(boxWidth, boxHeight, boxDepth);
-  const Cylinder = new THREE.CylinderGeometry( 0.05, 0.05, 1, 30 );
-
+  const radius = 0.5;
+  const widthSegments = 25;
+  const heightSegments = 25;
+  const geometry = makeShapeSphere(radius,widthSegments,heightSegments);
+  const Cylinder = makeCylinder(0.05, 0.05, 1, 30)
+  //To return a Cylinder shape 
+ function makeCylinder (radiusTop, radiusBottom, height, radialSegment){
+  	new_cylinder = new THREE.CylinderGeometry( radiusTop, radiusBottom, height, radialSegment );
+return new_cylinder;
+  }
+//To return a Sphere shape 
 function makeShapeSphere(radius,widthSegments,heightSegments) {
 	const shpere = new THREE.SphereGeometry(radius,widthSegments,heightSegments)
 	return shpere;
 	// body...
 }
-
+//bind the shape and material
   function makeInstance(geometry, color, x ,s) {
     const material = new THREE.MeshPhongMaterial({color});
-
     const cube = new THREE.Mesh(geometry, material);
     scene.add(cube);
-
     cube.position.x = x;
     cube.radius=s;
-
     return cube;
   }
   Sphere1 = makeShapeSphere(0.5 , 100, 100);
   Sphere2 = makeShapeSphere(0.35 ,100,100);
-
   const cubes = [
     makeInstance(Sphere2, 0x44aa88,  0, 1),
     makeInstance(Cylinder, 0x8844aa, 0, 1),
     makeInstance(Sphere1, 0xaa8844,  1.2,0.5),
   ];
-
   var Hcl = new THREE.Group();
     cubes[1].rotateX(0);
     cubes[1].rotateZ(1.5708);
@@ -119,7 +118,6 @@ function makeShapeSphere(radius,widthSegments,heightSegments) {
  /* cubes[0].position.x(-2);
     cubes[1].position.x(-3);
       cubes[3].position.x(-4);*/
-
   function resizeRendererToDisplaySize(renderer) {
   const canvas = renderer.domElement;
   const width = canvas.clientWidth;
@@ -131,26 +129,19 @@ function makeShapeSphere(radius,widthSegments,heightSegments) {
   return needResize;
 }
   
-
   function render(time) {
     time *= 0.001;  // convert time to seconds
     speed = 1+ 1*1;
     rot= time * speed;
-
     Hcl.rotation.y= rot;
   cubes.forEach((cube, ndx) => {
-
      
     });
-
     renderer.render(scene, camera);
-
     requestAnimationFrame(render);
   }
   requestAnimationFrame(render);
-
 }
-
 main();
 function resizeRendererToDisplaySize(renderer) {
   const canvas = renderer.domElement;
