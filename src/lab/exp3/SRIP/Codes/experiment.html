@@ -5,8 +5,13 @@
 	<link rel="stylesheet" href="src/css/style.css">
 	<title>Vib-rotational Spectroscopy of Hydrogen Chloride</title>
 	<img src="src/img/iiith-logo.png"/>
-	<script type="text/javascript" src="src/js/cal.js"></script>
-	<script type="text/javascript" src="../Libraries/three.js-master/build/Three.js"></script>
+  <script type="text/javascript" src="src/js/cal.js"></script>
+  <script type="text/javascript" src="../Libraries/three.js-master/build/Three.js"></script>
+  <script type="text/javascript" src="../Libraries/plotly-latest.min.js"></script>
+   
+    
+    
+<!--  <script type="text/javascript" src="src/js/graph.js"></script>-->
 	<!--<script type="text/javascript" src="../Libraries/three.js-master/src/loaders/Loader.js"></script> -->
 </head>
 
@@ -48,11 +53,35 @@
 <h1>Vib-rotational Spectroscopy </h1>
    <div name="container" class="inline">
 <div name="3D animation" class="divinline margin3d" >
-
-<p>test test div 1</p>
 <div id ='d3' style = "width:200 ; height: 400 ;">
-	<canvas id ='c'></canvas>
-	</div>
+  <canvas id ='c'></canvas>
+  
+  </div>
+  
+<div id="graph">
+  <div id ="mygraph" style="width: 100%"  class ="hide" style="display: none"></div>
+  
+   
+    </div>
+
+
+<!--<script type="text/javascript" >
+const ctx = document.getElementById('chartline');
+console.log(ctx);
+var myLineChart = new Chart(ctx, {
+    type: 'line',
+    data: [{
+        x: 10,
+        y: 20
+    }, {
+        x: 15,
+        y: 10
+    }],
+
+    
+});
+</script>-->
+</div>
 <script type="text/javascript">
 	function light(scene) {
     const color = 0xFFFFFF;
@@ -161,17 +190,18 @@ function resizeRendererToDisplaySize(renderer) {
 
 	<!-- First input from the user The diatomic molecule-->
 	Select the Diatomic molecule
-	<select id='op'> 
+	<select id='op' onchange="select()">  
 		<option value="Select Option"><strong>Select Option</strong></option>
 		<option value="Hcl"><strong>HCL</strong></option>
 		<option value="H2o"><strong>H<sub>2</sub>O</strong></option>
 		<option value="Nacl"><strong>NaCL</strong></option>
 	</select>
-	<br>
+  <br>
+  <div id="result">
+
+  </div>
 	<!-- The Second input from the user -->
-   Enter the value of P1 : <input type="text" name="p1" id="p1"><br>
-   Enter the value of R0 :<input type="text" name="r0" id="r0"><br>
-   <button onclick="Calculate()">GET IR SPECTRA</button>
+   <button onclick="cal()">GET IR SPECTRA</button>
 
 </div>
    	</div>
@@ -181,6 +211,6 @@ function resizeRendererToDisplaySize(renderer) {
 		<a href="">Developed at CCNSB IIIT Hyderabad</a>
 
 	</div>
-
+  <script type="text/javascript" src="src/js/graph.js"></script>
 </body>
 </html>

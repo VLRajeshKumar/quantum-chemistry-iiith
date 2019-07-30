@@ -55,7 +55,7 @@ text-decoration:none;padding:16.5px;width:740px;background:#009900;color:#eee;fl
 padding-left:10px;
 padding-top:6px;
 margin-left:3px;
-background-image:url("file:///Volumes/My%20Files/srip19/Assignment2/quantum-chemistry-iiith/src/lab/exp3/SRIP/Codes/src/img/footer.jpg");
+background-image:url("../img/footer.jpg");
 width:1095px;
 height:27px;
 }
@@ -65,4 +65,7 @@ height:27px;
 font-size:14px;
 text-decoration:none;
 color:#009900;
+}
+.hide{
+	display: none;
 }
